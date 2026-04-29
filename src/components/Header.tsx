@@ -15,54 +15,59 @@ export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const scrollToSection = (path: string) => {
+  const handleNavigation = (path: string) => {
     setIsOpen(false);
     navigate(path);
-    // Scroll suave después de navegación
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 150);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         <div 
-          className="flex items-center gap-3 cursor-pointer"
-          onClick={() => scrollToSection('/')}
+          className="flex items-center gap-3 cursor-pointer group"
+          onClick={() => handleNavigation('/')}
         >
-          <img src="/logo.png" alt="Lorend's" className="h-10 w-10 rounded-full object-cover" />
+          <img 
+            src="/logo.png" 
+            alt="Lorend's" 
+            className="h-11 w-11 rounded-full object-cover ring-2 ring-white/30 group-hover:ring-rose-300 transition-all"
+          />
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-white">Lorend's</h1>
-            <p className="text-xs text-white/70 -mt-1">Salón de Belleza</p>
+            <h1 className="text-3xl font-semibold tracking-tight text-white">Lorend's</h1>
+            <p className="text-[10px] text-white/70 -mt-1 font-medium">SALÓN DE BELLEZA</p>
           </div>
         </div>
 
-        <nav className="hidden md:flex items-center gap-8 text-white font-medium">
+        <nav className="hidden md:flex items-center gap-9 text-white font-medium">
           {navLinks.map((link) => (
             <button
               key={link.path}
-              onClick={() => scrollToSection(link.path)}
-              className={`hover:text-rose-300 transition-colors ${location.pathname === link.path ? 'text-rose-300' : ''}`}
+              onClick={() => handleNavigation(link.path)}
+              className={`hover:text-rose-300 transition-colors duration-300 pb-1 border-b-2 border-transparent hover:border-rose-300 
+                ${location.pathname === link.path ? 'text-rose-300 border-rose-300' : ''}`}
             >
               {link.name}
             </button>
           ))}
         </nav>
 
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white">
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-white p-2 hover:bg-white/10 rounded-xl transition-colors"
+        >
+          {isOpen ? <X size={32} /> : <Menu size={32} />}
         </button>
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-lg">
-          <nav className="flex flex-col px-6 py-6 gap-2">
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-white/20">
+          <nav className="flex flex-col py-6 px-6 gap-2">
             {navLinks.map((link) => (
               <button
                 key={link.path}
-                onClick={() => scrollToSection(link.path)}
-                className="text-left py-4 text-lg text-gray-800 hover:text-rose-600"
+                onClick={() => handleNavigation(link.path)}
+                className="text-left py-4 px-6 text-lg font-medium text-gray-800 hover:bg-rose-50 hover:text-rose-600 rounded-2xl transition-all"
               >
                 {link.name}
               </button>
