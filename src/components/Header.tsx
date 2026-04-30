@@ -3,11 +3,11 @@ import { Menu, X } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Inicio', path: '/' },
-  { name: 'Servicios', path: '/servicios' },
-  { name: 'Productos', path: '/productos' },
-  { name: 'Galería', path: '/galeria' },
-  { name: 'Acerca de', path: '/acerca' },
+  { name: 'INICIO', path: '/' },
+  { name: 'SERVICIOS', path: '/servicios' },
+  { name: 'PRODUCTOS', path: '/productos' },
+  { name: 'GALERÍA', path: '/galeria' },
+  { name: 'ACERCA DE', path: '/acerca' },
 ];
 
 export default function Header() {
@@ -30,7 +30,7 @@ export default function Header() {
         >
           <img 
             src="/logo.png" 
-            alt="Lorend's" 
+            alt="logo" 
             className="h-11 w-11 rounded-full object-cover ring-2 ring-white/30 group-hover:ring-rose-300 transition-all"
           />
           <div>

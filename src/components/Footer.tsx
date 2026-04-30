@@ -16,7 +16,7 @@ export default function Footer() {
     <footer className="fixed bottom-0 left-0 right-0 z-50 bg-black/60 backdrop-blur-md text-white border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between text-sm">
         <div className="flex items-center gap-2 opacity-90">
-          <img src="/logo.png" alt="Lorend's" className="h-8 w-8 rounded-full object-cover" />
+          <img src="/logo.png" alt="logo" className="h-8 w-8 rounded-full object-cover" />
         </div>
 
         <div className="text-center text-white/70 text-xs">

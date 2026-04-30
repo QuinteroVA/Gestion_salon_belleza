@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google:wght@0,400,500,600,700&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -14,7 +14,11 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  font-family: 'Poppins', system_ui, sans-serif;
+  font-family: "Google Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings: "GRAD" 0;
 }
 
 ::-webkit-scrollbar {
