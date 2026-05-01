@@ -67,7 +67,7 @@ export default function Header() {
                 <button
                   key={link.path}
                   onClick={() => handleNavigation(link.path)}
-                  className={`px-6 py-2.5 rounded-2xl font-medium text-sm transition-all duration-300
+                  className={`px-6 py-2.5 rounded-3xl font-medium text-sm transition-all duration-300
                     ${isActive 
                       ? 'bg-rose-400 text-white shadow-md' 
                       : 'text-gray-100 hover:bg-rose-100 hover:text-rose-600'
