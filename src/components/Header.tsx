@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -12,8 +12,32 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Animación de ocultar/mostrar header al hacer scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling hacia abajo → ocultar header
+        setIsHidden(true);
+      } else {
+        // Scrolling hacia arriba → mostrar header
+        setIsHidden(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const handleNavigation = (path: string) => {
     setIsOpen(false);
@@ -22,53 +46,68 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 bg-white/10 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <div 
-          className="flex items-center gap-3 cursor-pointer group"
-          onClick={() => handleNavigation('/')}
-        >
-          <img 
-            src="./image/logo.png" alt="logo" 
-            className="h-13 w-8 object-cover"
-          />
+    <header className={`fixed top-0 left-0 right-0 z-10 transition-all duration-300 ${
+      isHidden ? '-translate-y-full' : 'translate-y-0' }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        
+        {/* Logo */}
+        <div className="flex items-center gap-4 cursor-pointer group" onClick={() => handleNavigation('/')} >
+          <img src="./image/logo.png" alt="logo" className="h-13 w-8 object-cover" />
           <div>
             <h1 className="text-2xl font-semibold tracking-tight text-white">Lorend's</h1>
           </div>
         </div>
 
-        <nav className="hidden md:flex items-center gap-9 text-white font-medium">
-          {navLinks.map((link) => (
-            <button
-              key={link.path} onClick={() => handleNavigation(link.path)}
-              className={`hover:text-rose-300 transition-colors duration-300 pb-1 border-b-2 border-transparent hover:border-rose-300 
-                ${location.pathname === link.path ? 'text-rose-300 border-rose-300' : ''}`}
-            >
-              {link.name}
-            </button>
-          ))}
-        </nav>
+        {/* Navegación Desktop */}
+        <nav className="hidden md:flex items-center gap-2 text-white font-medium">
+          {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <button
+                  key={link.path}
+                  onClick={() => handleNavigation(link.path)}
+                  className={`px-6 py-2.5 rounded-2xl font-medium text-sm transition-all duration-300
+                    ${isActive 
+                      ? 'bg-rose-400 text-white shadow-md' 
+                      : 'text-gray-100 hover:bg-rose-100 hover:text-rose-600'
+                    }`}
+                >
+                  {link.name}
+                </button>
+              );
+            })}
+          </nav>
 
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white p-2 hover:bg-white/10 rounded-xl transition-colors"
-        >
-          {isOpen ? <X size={32} /> : <Menu size={32} />}
-        </button>
-      </div>
+          {/* Botón Hamburguesa */}
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-3 text-gray-700 hover:bg-white/70 rounded-2xl transition-colors"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
 
+      {/* Menú Mobile */}
       {isOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-white/20">
-          <nav className="flex flex-col py-6 px-6 gap-2">
-            {navLinks.map((link) => (
-              <button
-                key={link.path}
-                onClick={() => handleNavigation(link.path)}
-                className="text-left py-4 px-6 text-lg font-medium text-gray-800 hover:bg-rose-50 hover:text-rose-600 rounded-2xl transition-all"
-              >
-                {link.name}
-              </button>
-            ))}
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-white/30">
+          <nav className="flex flex-col px-6 py-6 gap-2">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <button
+                  key={link.path}
+                  onClick={() => handleNavigation(link.path)}
+                  className={`text-left px-6 py-4 rounded-2xl font-medium text-lg transition-all
+                    ${isActive 
+                      ? 'bg-rose-600 text-white' 
+                      : 'hover:bg-rose-50 text-gray-700'
+                    }`}
+                >
+                  {link.name}
+                </button>
+              );
+            })}
           </nav>
         </div>
       )}
