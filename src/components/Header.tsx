@@ -22,28 +22,25 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-10 bg-white/10 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <div 
           className="flex items-center gap-3 cursor-pointer group"
           onClick={() => handleNavigation('/')}
         >
           <img 
-            src="/logo.png" 
-            alt="logo" 
-            className="h-11 w-11 rounded-full object-cover ring-2 ring-white/30 group-hover:ring-rose-300 transition-all"
+            src="./image/logo.png" alt="logo" 
+            className="h-13 w-8 object-cover"
           />
           <div>
-            <h1 className="text-3xl font-semibold tracking-tight text-white">Lorend's</h1>
-            <p className="text-[10px] text-white/70 -mt-1 font-medium">SALÓN DE BELLEZA</p>
+            <h1 className="text-2xl font-semibold tracking-tight text-white">Lorend's</h1>
           </div>
         </div>
 
         <nav className="hidden md:flex items-center gap-9 text-white font-medium">
           {navLinks.map((link) => (
             <button
-              key={link.path}
-              onClick={() => handleNavigation(link.path)}
+              key={link.path} onClick={() => handleNavigation(link.path)}
               className={`hover:text-rose-300 transition-colors duration-300 pb-1 border-b-2 border-transparent hover:border-rose-300 
                 ${location.pathname === link.path ? 'text-rose-300 border-rose-300' : ''}`}
             >

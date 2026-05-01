@@ -11,10 +11,10 @@ import About from './pages/About';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen relative">
+      <div className="relative min-h-screen overflow-x-hidden">
         <Header />
-        
-        <main className="pt-20 pb-24">
+
+        <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/servicios" element={<Services />} />

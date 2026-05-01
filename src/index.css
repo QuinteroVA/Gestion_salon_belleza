@@ -9,18 +9,16 @@ html {
 }
 
 body {
-  background-image: url('/bg-global.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   font-family: "Google Sans", sans-serif;
   font-optical-sizing: auto;
   font-weight: <weight>;
   font-style: normal;
   font-variation-settings: "GRAD" 0;
+  margin: 0;
+  padding: 0;
 }
 
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }

@@ -11,7 +11,7 @@ export default function Section({
   id, 
   title, 
   children, 
-  bgColor = "bg-white/90" 
+  bgColor = "bg-white/90",
 }: SectionProps) {
   return (
     <section id={id} className="min-h-screen py-20 px-6 scroll-mt-24">

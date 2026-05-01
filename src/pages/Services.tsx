@@ -11,16 +11,21 @@ export default function Services() {
   ];
 
   return (
-    <Section id="services" title="Nuestros Servicios" bgColor="bg-purple-50/90">
-      <div className="grid md:grid-cols-2 gap-8">
-        {services.map((service, index) => (
-          <div key={index} className="bg-white/80 p-8 rounded-3xl hover:shadow-xl transition-all border border-white/50">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-3">{service.name}</h3>
-            <p className="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
-            <p className="text-rose-600 font-semibold text-xl">{service.price}</p>
-          </div>
-        ))}
-      </div>
-    </Section>
+    <div 
+      className="min-h-screen bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: "url('./image/services.jpg')" }}
+    >
+      <Section id="services" title="Nuestros Servicios" bgColor="bg-purple-50/95">
+        <div className="grid md:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <div key={index} className="bg-white/90 p-8 rounded-3xl hover:shadow-xl transition-all border border-white/50">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-3">{service.name}</h3>
+              <p className="text-gray-600 leading-relaxed mb-6">{service.desc}</p>
+              <p className="text-rose-600 font-semibold text-xl">{service.price}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+    </div>
   );
 }
