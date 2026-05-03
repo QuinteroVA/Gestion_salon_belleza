@@ -42,7 +42,7 @@ export default function Footer() {
           </div>
         </div>
         {/* Copyright */}
-        <div className="text-center text-white/100 text-xs">
+        <div className="text-center text-xs">
           © {new Date().getFullYear()} Lorend's | Todos los derechos reservados.
         </div>
         {/* Página actual */}

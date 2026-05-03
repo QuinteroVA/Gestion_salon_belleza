@@ -11,9 +11,10 @@ export default function Products() {
   ];
 
   return (
-    <div className="min-h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('./image/products.jpg')" }} >
-      <Section id="products" title="Productos Profesionales" bgColor="bg-white/95">
-        <p className="text-center text-lg text-gray-600 max-w-2xl mx-auto mb-12">
+    <div className="min-h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('./image/products.jpg')" }}>
+      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/50 to-black/60" />
+      <Section id="products" title="Productos Profesionales" bgColor="bg-rose-1/10">
+        <p className="text-center text-lg text-white max-w-2xl mx-auto mb-12">
           Selección de productos premium utilizados en nuestro salón.
         </p>
 
@@ -21,7 +22,7 @@ export default function Products() {
           {products.map((product) => (
             <div 
               key={product.id} 
-              className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col"
+              className="group bg-white/30 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col"
             >
               <div className="h-64 overflow-hidden">
                 <img 
@@ -32,8 +33,8 @@ export default function Products() {
               </div>
               <div className="p-8 flex flex-col flex-1">
                 <div className="uppercase text-xs tracking-widest text-rose-500 font-medium mb-2">{product.category}</div>
-                <h3 className="text-2xl font-semibold mb-3 text-gray-900">{product.name}</h3>
-                <p className="text-gray-600 flex-1 mb-6 leading-relaxed">{product.description}</p>
+                <h3 className="text-2xl font-semibold mb-3 text-white">{product.name}</h3>
+                <p className="text-white flex-1 mb-6 leading-relaxed">{product.description}</p>
                 
                 <div className="flex items-center justify-between mt-auto">
                   <span className="text-3xl font-bold text-rose-600">{product.price}</span>

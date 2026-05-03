@@ -60,7 +60,7 @@ export default function Header() {
         </div>
 
         {/* Navegación Desktop */}
-        <nav className="hidden md:flex items-center gap-2 text-white font-medium">
+        <nav className="hidden md:flex items-center gap-2 text-white">
           {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
               return (
@@ -69,8 +69,8 @@ export default function Header() {
                   onClick={() => handleNavigation(link.path)}
                   className={`px-6 py-2.5 rounded-3xl font-medium text-sm transition-all duration-300
                     ${isActive 
-                      ? 'bg-rose-400 text-white shadow-md' 
-                      : 'text-gray-100 hover:bg-rose-100 hover:text-rose-600'
+                      ? 'bg-rose-500 text-white shadow-lg' 
+                      : 'text-white hover:bg-rose-100 hover:text-rose-600'
                     }`}
                 >
                   {link.name}
@@ -82,15 +82,15 @@ export default function Header() {
           {/* Botón Hamburguesa */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-3 text-gray-700 hover:bg-white/70 rounded-2xl transition-colors"
+            className="md:hidden p-3 text-white hover:bg-white/70 rounded-2xl transition-colors"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? <X size={25} /> : <Menu size={25} />}
           </button>
         </div>
 
       {/* Menú Mobile */}
       {isOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-white/30">
+        <div className="md:hidden bg-white/10 backdrop-blur-xs border-t border-white/30">
           <nav className="flex flex-col px-6 py-6 gap-2">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
@@ -101,7 +101,7 @@ export default function Header() {
                   className={`text-left px-6 py-4 rounded-2xl font-medium text-lg transition-all
                     ${isActive 
                       ? 'bg-rose-600 text-white' 
-                      : 'hover:bg-rose-50 text-gray-700'
+                      : 'hover:bg-rose-50 text-white'
                     }`}
                 >
                   {link.name}
