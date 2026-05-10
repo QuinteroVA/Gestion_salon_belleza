@@ -8,8 +8,8 @@ export default function Home() {
       <Section id="home" title="Lorend's" bgColor="bg-rose-1/10">
         <div className="max-w-2xl mx-auto text-center space-y-8">
           <p className="text-xl md:text-2xl text-white font-medium leading-relaxed">
-            Un espacio donde la belleza se transforma en confianza. 
-            Experiencia premium en cuidado capilar, facial y estético.
+            Un lugar donde la belleza se transforma en confianza. 
+            Experiencia en cuidado capilar, facial y estético.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
             <a href="/servicios" 
