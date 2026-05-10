@@ -15,10 +15,11 @@ export default function Footer() {
 
   return (
     <footer className="fixed bottom-0 left-0 right-0 z-50 bg-rose-300/40 backdrop-blur-md text-white">
-      <div className="max-w-7xl mx-auto px-3 py-2 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+      <div className="grid grid-cols-3 items max-w-7xl mx-auto px-6 py-3">
+        
         {/* Redes Sociales */}
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-5">
+        {/* <div className="grid grid-cols-3 items-center gap-4">*/}
+          <div className="flex justify-start items-center gap-4">
             <a href="https://facebook.com/lorends" target="_blank" rel="noopener noreferrer"
               className="text-[#e11d48] hover:text-rose-600 transition-all hover:scale-110"
                 aria-label="Facebook">
@@ -40,13 +41,15 @@ export default function Footer() {
               <FaWhatsapp size={30} />
             </a>
           </div>
-        </div>
+        {/* </div> */}
+        
         {/* Copyright */}
-        <div className="text-center text-xs">
+        <div className="flex justify-center text-center text-xs">
           © {new Date().getFullYear()} Lorend's | Todos los derechos reservados.
         </div>
+        
         {/* Página actual */}
-        <div className="font-medium tracking-wide">{currentPage}</div>
+        <div className="flex justify-end font-medium tracking-wide">{currentPage}</div>
       </div>
     </footer>
   );
