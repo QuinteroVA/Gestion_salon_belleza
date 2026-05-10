@@ -12,11 +12,14 @@ body {
   font-family: "Google Sans", sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {
